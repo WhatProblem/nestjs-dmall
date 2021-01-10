@@ -394,6 +394,6 @@ Temporary Items
 
 =======
 # Local
-.env
+# .env
 dist
 build

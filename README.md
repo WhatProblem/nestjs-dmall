@@ -7,10 +7,10 @@
 模仿多点商城，电商系统
 
 技术栈：
-[x] NestJS
-[x] TypeScript
-[x] MySQL
-[x] docker
+- [x] NestJS
+- [x] TypeScript
+- [x] MySQL
+- [x] docker
 
 ## Installation
 
