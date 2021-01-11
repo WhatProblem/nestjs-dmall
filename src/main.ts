@@ -9,7 +9,7 @@ import { HttpExceptionFilter } from './filters/http-exception.filter';
 import { TransformInterceptor } from './interceptor/transform.interceptor';
 
 const PORT = process.env.PORT || '8080'
-const PREFIX = process.env.prefix || ''
+const PREFIX = process.env.PREFIX || ''
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
