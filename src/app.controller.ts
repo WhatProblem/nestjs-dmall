@@ -35,7 +35,7 @@ export class AppController {
   // 角色权限测试
   @UseGuards(JwtAuthGuard, RoleGuard)
   @Roles('isRole')
-  @Get('admin')
+  @Get('admintest')
   getAdminData(@Request() req) {
     return req.user
   }

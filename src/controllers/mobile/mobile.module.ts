@@ -3,7 +3,7 @@ import { CategoryController } from "./category/category.controller";
 
 @Module({
     imports:[],
-    providers: [CategoryController],
+    controllers: [CategoryController],
     exports: []
 })
 export class MobileModule {}

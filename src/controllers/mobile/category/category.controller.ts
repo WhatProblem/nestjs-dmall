@@ -1,6 +1,6 @@
 import { Controller, Get } from "@nestjs/common";
 
-@Controller('/mobile/category')
+@Controller('mobile')
 export class CategoryController {
     constructor() {}
 

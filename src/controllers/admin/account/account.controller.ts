@@ -1,6 +1,6 @@
 import { Controller, Get } from "@nestjs/common";
 
-@Controller('admin/account')
+@Controller('admin')
 export class AccountController {
     constructor() {}
 
