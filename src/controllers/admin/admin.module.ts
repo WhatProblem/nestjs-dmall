@@ -1,12 +1,18 @@
 import { Module } from "@nestjs/common";
-import { AdminEntityModule } from "src/entities/model/admin/admin.entities.module";
+import { AccountService } from "src/services/admin/account.service";
+import { LoginService } from "src/services/admin/login.service";
+import { ServicesModule } from "src/services/services.module";
 import { AccountController } from "./account/account.controller";
 
 @Module({
     imports:[
-        AdminEntityModule
+        ServicesModule
     ],
     controllers: [AccountController],
+    providers: [
+        AccountService,
+        LoginService
+    ],
     exports: []
 })
 export class AdminModule {}

@@ -1,12 +1,16 @@
 import { Controller, Get } from "@nestjs/common";
+import { AccountService } from "src/services/admin/account.service";
 
 @Controller('admin')
 export class AccountController {
-    constructor() {}
+    constructor(
+        private readonly accountService: AccountService
+    ) {}
 
     // todo...
     @Get()
-    getData() {
-        return 'account账户管理controller'
+    async getData() {
+        // return 'account账户管理controller'
+        return this.accountService.getData()
     }
 }

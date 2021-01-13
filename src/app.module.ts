@@ -26,6 +26,7 @@ import { ControllersModule } from './controllers/controllers.module';
         password: '123456',
         database: 'my_db',
         // entities: [__dirname + '/**/*.entity{.ts,.js}'],
+        autoLoadEntities: true, // 自动加载实体
         logging: true,
         synchronize: false, // 不自动同步创建数据表
         timezone: '+08:00', // 东八区
