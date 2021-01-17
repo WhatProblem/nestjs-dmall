@@ -1,5 +1,9 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
+import { InjectRepository } from '@nestjs/typeorm';
+import { AccountEntity } from 'src/entities/model/admin/account.entity';
+import { ToolsService } from 'src/services/tools/tools.service';
+import { Repository } from 'typeorm';
 
 type USER = {
     username: String,
@@ -10,42 +14,34 @@ type USER = {
 
 @Injectable()
 export class AuthService {
-    // mock 来自数据库的数据
-    private mockUsers: Array<USER> = [
-        {
-            username: 'admin',
-            password: '123456',
-            userId: 1,
-            isRole: '1',
-        },
-        {
-            username: '开发管理员1',
-            password: '123456',
-            userId: 2,
-            isRole: '2'
-        },
-        {
-            username: '开发管理员2',
-            password: '123456',
-            userId: 3,
-            isRole: '3'
-        },
-    ]
     constructor(
+        @InjectRepository(AccountEntity) private readonly userRepositoty: Repository<AccountEntity>,
         private readonly jwtService: JwtService,
+        private readonly toolsService: ToolsService,
     ) { }
 
-    async validateUser(username: string, pass: string): Promise<any> {
-        const user = await this.mockUsers.find(item => item.username === username)
-        if (user && user.password === pass) {
-            const { password, ...result } = user;
-            return result;
+    /**
+     * 验证用户名及密码正确性
+     * @param username 用户名
+     * @param password 密码
+     */
+    async validateUser(username: string, password: string): Promise<any> {
+        try {
+            const user = await this.userRepositoty.findOne({where: {username}})
+            const isValidPassword = user && this.toolsService.checkPassword(password, user.password) || false
+            if (isValidPassword) {
+                const {username, password, ...result} = user
+                return result
+            }
+            return null
+        } catch (e) {
+            Logger.log(e, '用户登录异常')
         }
-        return null;
     }
 
     async login(user: any) {
-        const payload = { username: user.username, sub: user.userId, isRole: (this.mockUsers.find(item=>item.username===user.username) || {}).isRole };
+        console.log(user)
+        const payload = { username: user.username, sub: user.userId };
         return {
             access_token: this.jwtService.sign(payload),
         };

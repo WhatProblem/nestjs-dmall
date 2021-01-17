@@ -17,7 +17,6 @@ export class LocalStrategy extends PassportStrategy(Strategy) {
 		// console.log('本地策略：验证用户是否存在')
 		const user = await this.authService.validateUser(username, password);
 		if (!user) {
-			// throw new UnauthorizedException();
 			throw new HttpException({msg: '用户名或密码错误', code: 401}, HttpStatus.OK);
 		}
 		return user;

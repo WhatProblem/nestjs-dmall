@@ -1,17 +1,15 @@
 import { Module } from "@nestjs/common";
 import { EntitiesModule } from "src/entities/entities.module";
-import { AccountService } from "./admin/account.service";
-import { LoginService } from "./admin/login.service";
+import { AccountService } from "./admin/account/account.service";
+import { ToolsService } from "./tools/tools.service";
 
 @Module({
     imports: [EntitiesModule],
     providers: [
+        ToolsService,
         AccountService,
-        LoginService
     ],
     exports: [
-        // AccountService,
-        // LoginService,
         EntitiesModule
     ]
 })

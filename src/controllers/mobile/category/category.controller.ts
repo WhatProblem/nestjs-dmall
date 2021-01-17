@@ -1,11 +1,11 @@
 import { Controller, Get } from "@nestjs/common";
 
-@Controller('mobile')
+@Controller('m')
 export class CategoryController {
     constructor() {}
 
     // todo...
-    @Get()
+    @Get('test')
     getData() {
         return 'Category账户管理controller'
     }
