@@ -20,7 +20,7 @@ import { LoginController } from "./login/login.controller";
 		JwtModule.register({
 			secret: process.env.SECRET,
 			signOptions: { expiresIn: '600s' }, // 超时时间
-		})
+		}),
 	],
 	controllers: [
 		LoginController,

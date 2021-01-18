@@ -7,12 +7,15 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import { Logger } from '@nestjs/common';
 import { HttpExceptionFilter } from './filters/http-exception.filter';
 import { TransformInterceptor } from './interceptor/transform.interceptor';
+import * as path from 'path';
 
 const PORT = process.env.PORT || '8080'
 const PREFIX = process.env.PREFIX || ''
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  // 设置静态资源目录
+  app.useStaticAssets(path.join(__dirname, '..', 'static'), {prefix: `/${PREFIX}`})
   // 解决跨域
   app.enableCors()
 
