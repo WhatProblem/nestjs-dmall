@@ -224,3 +224,57 @@ ALTER TABLE `roles_menus`
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+-- 
+-- 创建表的参考
+-- 
+
+CREATE TABLE `business_insurance_price` (
+  `id` bigint(12) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+  `uuid` varchar(32) DEFAULT NULL COMMENT '唯一uuid',
+  `product_code` varchar(32) DEFAULT NULL COMMENT '场景产品编码',
+  `sku_code` varchar(32) DEFAULT NULL COMMENT '渠道产品编码',
+  `vendor_code` varchar(32) DEFAULT NULL COMMENT '供应商编码',
+  `business_code` varchar(32) DEFAULT NULL COMMENT '商家编号',
+  `calculate_type` int(4) DEFAULT NULL COMMENT '计算类型（1比例 2固定）',
+  `category_code` varchar(64) DEFAULT NULL COMMENT '类目ID',
+  `category_name` varchar(64) DEFAULT NULL COMMENT '类目名称',
+  `category_level` int(4) DEFAULT NULL COMMENT '类目等级',
+  `price_interval_min` decimal(20,6) DEFAULT NULL COMMENT '价格区间小值',
+  `price_interval_max` decimal(20,6) DEFAULT NULL COMMENT '价格区间大值',
+  `contain_min_price` int(4) DEFAULT NULL COMMENT '是否包含小值：0不包含  1包含',
+  `contain_max_price` int(4) DEFAULT NULL COMMENT '是否包含大值：0不包含  1包含',
+  `price_or_rate` decimal(20,6) DEFAULT NULL COMMENT '保费（元）/费率(不含%)',
+  `price_amount` decimal(20,6) DEFAULT NULL COMMENT '保额(元)',
+  `insurance_type` varchar(32) DEFAULT NULL COMMENT 'XXXXX',
+  `large_small_type` varchar(16) DEFAULT NULL COMMENT '大小件标识',
+  `operator` varchar(128) DEFAULT NULL COMMENT '操作人',
+  `status` int(4) NOT NULL DEFAULT '1' COMMENT '状态（1：有效，2：无效  -1：逻辑删除）',
+  `modified_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `created_time` datetime NOT NULL COMMENT '创建时间',
+  PRIMARY KEY (`id`),
+  KEY `idx_code` (`product_code`) USING BTREE
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='商家险费率表';
+
+
+
+-- 
+-- 产品表的创建
+-- 
+
+CREATE TABLE `business_insurance_price` (
+  `id` bigint(12) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+  `product_code` varchar(32) DEFAULT NULL COMMENT '产品编码',
+  `product_name` varchar(150) DEFAULT NULL COMMENT '产品名称',
+  `category_code` varchar(20) DEFAULT NULL COMMENT '商品类目ID(水果/蔬菜)',
+  `category_name` varchar(150) DEFAULT NULL COMMENT '商品类目ID(水果/蔬菜)',
+  `default_price` decimal(20,6) DEFAULT NULL COMMENT '默认价格(元)',
+  `sale_price` decimal(20,6) DEFAULT NULL COMMENT '促销价格(元)',
+  `rule_unit` decimal(20,6) DEFAULT NULL COMMENT '销售规格(kg/斤/ml/L/袋/套。。。)',
+  `sale_total` int(4) DEFAULT NULL COMMENT '销售总量',
+  `store_total` int(4) DEFAULT NULL COMMENT '入库总量',
+  `is_del` tinyint(4) NOT NULL DEFAULT 0 COMMENT '是否删除，-1 表示删除 0 表示正常',
+  `updated_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `created_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  PRIMARY KEY (`id`),
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='产品表'';
