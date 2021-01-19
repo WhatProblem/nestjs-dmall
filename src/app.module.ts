@@ -21,7 +21,7 @@ import { ControllersModule } from './controllers/controllers.module';
         host: 'localhost',
         port: 3306,
         username: 'root',
-        password: '',
+        password: '123456',
         database: 'my_db',
         // entities: [__dirname + '/**/*.entity{.ts,.js}'],
         autoLoadEntities: true, // 自动加载实体
