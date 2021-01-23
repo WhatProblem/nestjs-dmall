@@ -6,9 +6,11 @@ import { AuthService } from "src/auth/auth.service";
 import { JwtStrategy } from "src/auth/strategies/jwt.strategy";
 import { LocalStrategy } from "src/auth/strategies/local.strategy";
 import { AccountService } from "src/services/admin/account/account.service";
+import { DictService } from "src/services/admin/dict/dict.service";
 import { ServicesModule } from "src/services/services.module";
 import { ToolsService } from "src/services/tools/tools.service";
 import { AccountController } from "./account/account.controller";
+import { DictController } from "./dict/dict.controller";
 import { LoginController } from "./login/login.controller";
 
 @Module({
@@ -23,6 +25,7 @@ import { LoginController } from "./login/login.controller";
 		}),
 	],
 	controllers: [
+		DictController,
 		LoginController,
 		AccountController,
 	],
@@ -34,6 +37,7 @@ import { LoginController } from "./login/login.controller";
 		/* 获取用户信息服务：为用户鉴权提供服务 */
 		AuthService,
 		ToolsService,
+		DictService,
 		AccountService,
 	],
 	exports: []

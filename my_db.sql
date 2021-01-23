@@ -277,4 +277,48 @@ CREATE TABLE `business_insurance_price` (
   `updated_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
   `created_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`),
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='产品表'';
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='产品表';
+
+
+-- 
+-- 产品表
+-- 
+
+CREATE TABLE `product` (
+  `id` bigint(12) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+  `product_code` varchar(32) DEFAULT NULL COMMENT '产品编码',
+  `product_name` varchar(150) DEFAULT NULL COMMENT '产品名称',
+  `category_code` varchar(20) DEFAULT NULL COMMENT '商品类目ID(水果/蔬菜)',
+  `default_price` decimal(20,6) DEFAULT NULL COMMENT '默认价格(元)',
+  `sale_price` decimal(20,6) DEFAULT NULL COMMENT '促销价格(元)',
+  `rule_unit` decimal(20,6) DEFAULT NULL COMMENT '销售规格(kg/斤/ml/L/袋/套。。。)',
+  `sale_total` int(4) DEFAULT 0 COMMENT '销售总量',
+  `store_total` int(4) DEFAULT NULL COMMENT '入库总量',
+  `product_url` varchar(150) DEFAULT NULL COMMENT '产品小图标地址',
+  `product_banner_url` varchar(256) DEFAULT NULL COMMENT '产品banner图列表url地址',
+  `product_detail_url` varchar(256) DEFAULT NULL COMMENT '产品详情图图列表url地址',
+  `is_del` tinyint(4) NOT NULL DEFAULT 0 COMMENT '是否删除，-1 表示删除 0 表示正常',
+  `updated_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `created_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  PRIMARY KEY (`id`),
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='产品表';
+
+
+-- 
+-- 字典表
+-- 
+
+CREATE TABLE `dict` (
+  `id` bigint(12) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+  `parent_code` varchar(50) NOT NULL COMMENT '父编码',
+  `code` varchar(70) NOT NULL COMMENT '当前数据编码',
+  `uuid` varchar(120) NOT NULL COMMENT 'uuid 组合父编码与子编码',
+  `label` varchar(50) NOT NULL COMMENT 'label描述值',
+  `value` varchar(50) NOT NULL COMMENT '描述值对应的key',
+  `description` varchar(150) DEFAULT NULL COMMENT '描述',
+  `status` varchar(20) NOT NULL COMMENT '禁用 0/启用 1',
+  `is_del` tinyint(4) NOT NULL DEFAULT 0 COMMENT '是否删除，-1 表示删除 0 表示正常',
+  `updated_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `created_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='字典表';

@@ -9,8 +9,17 @@ export class HttpExceptionFilter implements ExceptionFilter {
 		const request = ctx.getRequest()
 		const status = exception instanceof HttpException ? exception.getStatus() : HttpStatus.INTERNAL_SERVER_ERROR
 
-		let msg = exception.message
+		// let msg = exception.message
+		// let code = 200
+		let msg = exception.getResponse()
 		let code = 200
+		try {
+			const msgObj = (exception.getResponse()) as any
+			msg = msgObj.message
+			code = msgObj.code || msgObj.statusCode
+		} catch (e) {
+			// Logger.log(exception, `日志错误信息：${e}`)
+		}
 		try {
 			const msgObj = JSON.parse(exception.message)
 			msg = msgObj.message

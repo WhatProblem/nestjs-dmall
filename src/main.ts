@@ -33,7 +33,7 @@ async function bootstrap() {
   app.setGlobalPrefix(PREFIX)
 
   // 全局异常过滤器
-  // app.useGlobalFilters(new HttpExceptionFilter())
+  app.useGlobalFilters(new HttpExceptionFilter())
   // 全局切面拦截<返回指定数据格式>
   app.useGlobalInterceptors(new TransformInterceptor())
 
