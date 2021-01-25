@@ -2,10 +2,12 @@ import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { AccountEntity } from "./model/admin/account.entity";
 import { DictEntity } from "./model/admin/system/dict.entity";
+import { MenusEntity } from "./model/admin/system/menus.entity";
 
 const entityList = [
     AccountEntity,
     DictEntity,
+    MenusEntity,
 ]
 
 @Module({

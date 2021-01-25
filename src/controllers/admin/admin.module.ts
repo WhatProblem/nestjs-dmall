@@ -7,11 +7,13 @@ import { JwtStrategy } from "src/auth/strategies/jwt.strategy";
 import { LocalStrategy } from "src/auth/strategies/local.strategy";
 import { AccountService } from "src/services/admin/account/account.service";
 import { DictService } from "src/services/admin/dict/dict.service";
+import { MenusService } from "src/services/admin/menus/menus.service";
 import { ServicesModule } from "src/services/services.module";
 import { ToolsService } from "src/services/tools/tools.service";
 import { AccountController } from "./account/account.controller";
 import { DictController } from "./dict/dict.controller";
 import { LoginController } from "./login/login.controller";
+import { MenusController } from "./menus/menus.controller";
 
 @Module({
 	imports: [
@@ -28,6 +30,7 @@ import { LoginController } from "./login/login.controller";
 		DictController,
 		LoginController,
 		AccountController,
+		MenusController,
 	],
 	providers: [
 		/* 本地策略：验证用户是否存在，查询数据库用户是否已经注册过 */
@@ -39,6 +42,7 @@ import { LoginController } from "./login/login.controller";
 		ToolsService,
 		DictService,
 		AccountService,
+		MenusService,
 	],
 	exports: []
 })

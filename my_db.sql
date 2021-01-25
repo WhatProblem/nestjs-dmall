@@ -322,3 +322,24 @@ CREATE TABLE `dict` (
   `created_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='字典表';
+
+
+-- 
+-- 菜单资源表
+-- 
+
+CREATE TABLE `menus` (
+  `id` bigint(12) NOT NULL AUTO_INCREMENT COMMENT '主键id',
+  `parent_menu_id` int(12) NOT NULL DEFAULT -1 COMMENT '父模块id',
+  `menu_name` varchar(50) DEFAULT NULL COMMENT '菜单名称',
+  `action_name` varchar(100) DEFAULT NULL COMMENT '操作名称',
+  `icon` varchar(100) DEFAULT NULL COMMENT '小图标',
+  `url` varchar(100) DEFAULT NULL COMMENT 'url地址',
+  `sort` int(12) NOT NULL DEFAULT 1 COMMENT '排序',
+  `description` varchar(100) DEFAULT NULL COMMENT '描述',
+  `is_menu` varchar(10) NOT NULL DEFAULT '1' COMMENT '接口或者是菜单 1 菜单 2 接口',
+  `is_del` tinyint(4) NOT NULL DEFAULT 0 COMMENT '是否删除，-1 表示删除 0 表示正常',
+  `updated_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '更新时间',
+  `created_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin COMMENT='菜单/接口权限记录表';
