@@ -15,7 +15,7 @@ export class HttpExceptionFilter implements ExceptionFilter {
 		let code = 200
 		try {
 			const msgObj = (exception.getResponse()) as any
-			msg = msgObj.message
+			msg = msgObj.message ||msgObj.msg
 			code = msgObj.code || msgObj.statusCode
 		} catch (e) {
 			// Logger.log(exception, `日志错误信息：${e}`)

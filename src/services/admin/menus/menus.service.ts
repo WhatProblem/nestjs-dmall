@@ -27,9 +27,11 @@ export class MenusService {
 			const { pageSize = 10, pageNo = 1, ...others } = queryOption || {}
 			const [data, total] = await getConnection().createQueryBuilder(MenusEntity, 'menus')
 			.andWhere('menus.menuName LIKE :menuName', {menuName: `%${queryOption.menuName}%`})
-			.orderBy({'menus.updatedTime':'DESC'})
+			.orderBy({'menus.updateTime':'DESC'})
 			.skip((pageNo-1)*pageSize)
+			.take(pageSize)
 			.getManyAndCount()
+
 			return {list: data, total, pageNo, pageSize}
 		} catch(e) {
 			throw new HttpException({msg:'服务异常'}, 500)
