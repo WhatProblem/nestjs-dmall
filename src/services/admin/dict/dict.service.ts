@@ -45,7 +45,7 @@ export class DictService {
 		const [data, total] = await this.dictRepository.findAndCount({
 			skip: (pageNo - 1) * pageSize,
 			take: pageSize,
-			order: { updateTime: 'DESC' },
+			order: { updatedTime: 'DESC' },
 			where: fileObjectField({ ...others, isDel: 0 })
 		})
 

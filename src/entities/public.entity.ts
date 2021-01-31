@@ -24,7 +24,7 @@ export class PublicEntity extends BaseEntity {
 		name: 'created_time',
 		comment: '创建时间'
 	})
-	createTime: Date
+	createdTime: Date
 
 	@UpdateDateColumn({
 		type: 'timestamp',
@@ -32,5 +32,5 @@ export class PublicEntity extends BaseEntity {
 		name: 'updated_time',
 		comment: '更新时间'
 	})
-	updateTime: Date
+	updatedTime: Date
 }

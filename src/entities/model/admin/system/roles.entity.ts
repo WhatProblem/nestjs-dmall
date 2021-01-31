@@ -14,7 +14,7 @@ export class RolesEntity extends PublicEntity {
     @Column({
         type: 'varchar',
         nullable: true,
-        length: 150,
+        length: 100,
         name: 'description',
         comment: '角色描述'
     })

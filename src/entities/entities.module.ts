@@ -3,11 +3,15 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { AccountEntity } from "./model/admin/account.entity";
 import { DictEntity } from "./model/admin/system/dict.entity";
 import { MenusEntity } from "./model/admin/system/menus.entity";
+import { RolesEntity } from "./model/admin/system/roles.entity";
+import { RolesMenusEntity } from "./model/admin/system/roles_menus.entity";
 
 const entityList = [
     AccountEntity,
     DictEntity,
     MenusEntity,
+    RolesMenusEntity,
+    RolesEntity,
 ]
 
 @Module({

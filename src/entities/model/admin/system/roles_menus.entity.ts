@@ -6,7 +6,7 @@ import { Column, Entity } from "typeorm";
  * 将角色分配给对应的菜单
  */
 @Entity('roles_menus')
-export class RolesMenus extends PublicEntity {
+export class RolesMenusEntity extends PublicEntity {
 
     @Column({
         type: 'int',
