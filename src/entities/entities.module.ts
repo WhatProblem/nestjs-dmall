@@ -1,6 +1,7 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { AccountEntity } from "./model/admin/account.entity";
+import { AccountRolesEntity } from "./model/admin/system/account_roles.entity";
 import { DictEntity } from "./model/admin/system/dict.entity";
 import { MenusEntity } from "./model/admin/system/menus.entity";
 import { RolesEntity } from "./model/admin/system/roles.entity";
@@ -12,6 +13,7 @@ const entityList = [
     MenusEntity,
     RolesMenusEntity,
     RolesEntity,
+    AccountRolesEntity,
 ]
 
 @Module({

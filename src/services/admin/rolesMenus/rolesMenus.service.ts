@@ -57,7 +57,6 @@ export class RolesMenusService {
 	async queryRoleMenu(queryOption: ObjectType): Promise<unknown> {
 		try {
 			const { pageSize = 10, pageNo = 1, ...others } = queryOption || {}
-			console.log(others)
 			const [data, total] = await this.rolesMenusRepository.findAndCount({
 				skip: (pageNo - 1) * pageSize,
 				take: pageSize,

@@ -2,7 +2,7 @@ import { PublicEntity } from "src/entities/public.entity";
 import { Column, Entity } from "typeorm";
 
 @Entity('account_roles')
-export class AccountRoles extends PublicEntity {
+export class AccountRolesEntity extends PublicEntity {
     @Column({
         type: 'int',
         nullable: false,
