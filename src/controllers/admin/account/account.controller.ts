@@ -19,14 +19,15 @@ export class AccountController {
      * 创建新用户
      * @param createAccountDto 创建账户dto对象
      */
-    @UseGuards(JwtAuthGuard)
     @Post('account/create')
     async createAccount(@Body() createAccountDto: CreateAccountDto): Promise<any> {
         return await this.accountService.createAccount(createAccountDto)
     }
-
+    
+    // 测试鉴权后返回数据
+    @UseGuards(JwtAuthGuard)
     @Get('getAccount')
     async getAccount(): Promise<any> {
-
+        return '测试鉴权-jwt返回数据'
     }
 }
